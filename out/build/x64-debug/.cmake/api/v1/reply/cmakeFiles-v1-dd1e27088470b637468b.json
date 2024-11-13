@@ -742,16 +742,13 @@
 		{
 			"isGenerated" : true,
 			"path" : "out/build/x64-debug/CMakeFiles/3.24.202208181-MSVC_2/CMakeCXXCompiler.cmake"
-		},
-		{
-			"path" : "OpenGLShaderStartUp/CMakeLists.txt"
 		}
 	],
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "C:/Users/jajaz/Downloads/OpenGLShaderStartUp/out/build/x64-debug",
-		"source" : "C:/Users/jajaz/Downloads/OpenGLShaderStartUp"
+		"build" : "C:/Users/jajaz/OneDrive/\ubb38\uc11c/GitHub/UnityShaderStartUp/out/build/x64-debug",
+		"source" : "C:/Users/jajaz/OneDrive/\ubb38\uc11c/GitHub/UnityShaderStartUp"
 	},
 	"version" : 
 	{

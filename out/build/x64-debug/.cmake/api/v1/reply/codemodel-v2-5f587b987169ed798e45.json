@@ -6,28 +6,13 @@
 			[
 				{
 					"build" : ".",
-					"childIndexes" : 
-					[
-						1
-					],
 					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.8"
 					},
 					"projectIndex" : 0,
-					"source" : "."
-				},
-				{
-					"build" : "OpenGLShaderStartUp",
-					"jsonFile" : "directory-OpenGLShaderStartUp-Debug-dfe3c05d6e57ef55382d.json",
-					"minimumCMakeVersion" : 
-					{
-						"string" : "3.8"
-					},
-					"parentIndex" : 0,
-					"projectIndex" : 0,
-					"source" : "OpenGLShaderStartUp",
+					"source" : ".",
 					"targetIndexes" : 
 					[
 						0
@@ -40,8 +25,7 @@
 				{
 					"directoryIndexes" : 
 					[
-						0,
-						1
+						0
 					],
 					"name" : "OpenGLShaderStartUp",
 					"targetIndexes" : 
@@ -53,9 +37,9 @@
 			"targets" : 
 			[
 				{
-					"directoryIndex" : 1,
-					"id" : "OpenGLShaderStartUp::@baf5432006fc2293fa6d",
-					"jsonFile" : "target-OpenGLShaderStartUp-Debug-4b4e68a14a6939dd5704.json",
+					"directoryIndex" : 0,
+					"id" : "OpenGLShaderStartUp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-OpenGLShaderStartUp-Debug-e3ff6f7c09c13a81eee9.json",
 					"name" : "OpenGLShaderStartUp",
 					"projectIndex" : 0
 				}
@@ -65,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/jajaz/Downloads/OpenGLShaderStartUp/out/build/x64-debug",
-		"source" : "C:/Users/jajaz/Downloads/OpenGLShaderStartUp"
+		"build" : "C:/Users/jajaz/OneDrive/\ubb38\uc11c/GitHub/UnityShaderStartUp/out/build/x64-debug",
+		"source" : "C:/Users/jajaz/OneDrive/\ubb38\uc11c/GitHub/UnityShaderStartUp"
 	},
 	"version" : 
 	{

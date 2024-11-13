@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "OpenGLShaderStartUp/OpenGLShaderStartUp.exe"
+			"path" : "OpenGLShaderStartUp.exe"
 		},
 		{
-			"path" : "OpenGLShaderStartUp/OpenGLShaderStartUp.pdb"
+			"path" : "OpenGLShaderStartUp.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -13,12 +13,11 @@
 	{
 		"commands" : 
 		[
-			"add_executable",
-			"set_property"
+			"add_executable"
 		],
 		"files" : 
 		[
-			"OpenGLShaderStartUp/CMakeLists.txt"
+			"CMakeLists.txt"
 		],
 		"nodes" : 
 		[
@@ -28,13 +27,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 6,
-				"parent" : 0
-			},
-			{
-				"command" : 1,
-				"file" : 0,
-				"line" : 9,
+				"line" : 13,
 				"parent" : 0
 			}
 		]
@@ -48,7 +41,7 @@
 					"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1"
 				},
 				{
-					"fragment" : "-std:c++20"
+					"fragment" : "-std:c++17"
 				}
 			],
 			"language" : "CXX",
@@ -56,9 +49,9 @@
 			{
 				"backtraces" : 
 				[
-					2
+					1
 				],
-				"standard" : "20"
+				"standard" : "17"
 			},
 			"sourceIndexes" : 
 			[
@@ -66,7 +59,7 @@
 			]
 		}
 	],
-	"id" : "OpenGLShaderStartUp::@baf5432006fc2293fa6d",
+	"id" : "OpenGLShaderStartUp::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -90,8 +83,8 @@
 	"nameOnDisk" : "OpenGLShaderStartUp.exe",
 	"paths" : 
 	{
-		"build" : "OpenGLShaderStartUp",
-		"source" : "OpenGLShaderStartUp"
+		"build" : ".",
+		"source" : "."
 	},
 	"sourceGroups" : 
 	[
@@ -101,13 +94,6 @@
 			[
 				0
 			]
-		},
-		{
-			"name" : "Header Files",
-			"sourceIndexes" : 
-			[
-				1
-			]
 		}
 	],
 	"sources" : 
@@ -115,13 +101,8 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "OpenGLShaderStartUp/OpenGLShaderStartUp.cpp",
+			"path" : "src/main.cpp",
 			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"path" : "OpenGLShaderStartUp/OpenGLShaderStartUp.h",
-			"sourceGroupIndex" : 1
 		}
 	],
 	"type" : "EXECUTABLE"

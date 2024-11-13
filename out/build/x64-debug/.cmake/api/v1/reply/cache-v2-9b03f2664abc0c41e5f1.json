@@ -39,7 +39,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/jajaz/Downloads/OpenGLShaderStartUp/out/build/x64-debug"
+			"value" : "c:/Users/jajaz/OneDrive/\ubb38\uc11c/GitHub/UnityShaderStartUp/out/build/x64-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -467,7 +467,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/jajaz/Downloads/OpenGLShaderStartUp/out/build/x64-debug/CMakeFiles/pkgRedirects"
+			"value" : "C:/Users/jajaz/OneDrive/\ubb38\uc11c/GitHub/UnityShaderStartUp/out/build/x64-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -527,7 +527,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/jajaz/Downloads/OpenGLShaderStartUp"
+			"value" : "C:/Users/jajaz/OneDrive/\ubb38\uc11c/GitHub/UnityShaderStartUp"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -539,7 +539,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "C:/Users/jajaz/Downloads/OpenGLShaderStartUp/out/install/x64-debug"
+			"value" : "C:/Users/jajaz/OneDrive/\ubb38\uc11c/GitHub/UnityShaderStartUp/out/install/x64-debug"
 		},
 		{
 			"name" : "CMAKE_LINKER",
@@ -675,7 +675,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "2"
+			"value" : "1"
 		},
 		{
 			"name" : "CMAKE_PLATFORM_INFO_INITIALIZED",
@@ -1075,7 +1075,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/jajaz/Downloads/OpenGLShaderStartUp/out/build/x64-debug"
+			"value" : "C:/Users/jajaz/OneDrive/\ubb38\uc11c/GitHub/UnityShaderStartUp/out/build/x64-debug"
 		},
 		{
 			"name" : "OpenGLShaderStartUp_IS_TOP_LEVEL",
@@ -1099,7 +1099,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/jajaz/Downloads/OpenGLShaderStartUp"
+			"value" : "C:/Users/jajaz/OneDrive/\ubb38\uc11c/GitHub/UnityShaderStartUp"
 		}
 	],
 	"kind" : "cache",
