@@ -11,7 +11,7 @@
 # =============================================================================
 
 # =============================================================================
-# Project: OpenGLShaderStartUp
+# Project: ShaderStartUp
 # Configurations: Debug
 # =============================================================================
 
@@ -39,49 +39,85 @@ include CMakeFiles\rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = C$:\Users\jajaz\OneDrive\문서\GitHub\UnityShaderStartUp\out\build\x64-debug\
+cmake_ninja_workdir = C$:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug\
 # =============================================================================
-# Object build statements for EXECUTABLE target OpenGLShaderStartUp
+# Object build statements for STATIC_LIBRARY target glad
 
 
 #############################################
-# Order-only phony target for OpenGLShaderStartUp
+# Order-only phony target for glad
 
-build cmake_object_order_depends_target_OpenGLShaderStartUp: phony || CMakeFiles\OpenGLShaderStartUp.dir
+build cmake_object_order_depends_target_glad: phony || CMakeFiles\glad.dir
 
-build CMakeFiles\OpenGLShaderStartUp.dir\src\main.cpp.obj: CXX_COMPILER__OpenGLShaderStartUp_Debug C$:\Users\jajaz\OneDrive\문서\GitHub\UnityShaderStartUp\src\main.cpp || cmake_object_order_depends_target_OpenGLShaderStartUp
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17
-  OBJECT_DIR = CMakeFiles\OpenGLShaderStartUp.dir
-  OBJECT_FILE_DIR = CMakeFiles\OpenGLShaderStartUp.dir\src
-  TARGET_COMPILE_PDB = CMakeFiles\OpenGLShaderStartUp.dir\
-  TARGET_PDB = OpenGLShaderStartUp.pdb
+build CMakeFiles\glad.dir\external\glad\src\glad.c.obj: C_COMPILER__glad_Debug C$:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glad\src\glad.c || cmake_object_order_depends_target_glad
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1
+  INCLUDES = -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glad\include
+  OBJECT_DIR = CMakeFiles\glad.dir
+  OBJECT_FILE_DIR = CMakeFiles\glad.dir\external\glad\src
+  TARGET_COMPILE_PDB = CMakeFiles\glad.dir\glad.pdb
+  TARGET_PDB = glad.pdb
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target OpenGLShaderStartUp
+# Link build statements for STATIC_LIBRARY target glad
 
 
 #############################################
-# Link the executable OpenGLShaderStartUp.exe
+# Link the static library glad.lib
 
-build OpenGLShaderStartUp.exe: CXX_EXECUTABLE_LINKER__OpenGLShaderStartUp_Debug CMakeFiles\OpenGLShaderStartUp.dir\src\main.cpp.obj
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
-  LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
-  LINK_LIBRARIES = kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
-  OBJECT_DIR = CMakeFiles\OpenGLShaderStartUp.dir
+build glad.lib: C_STATIC_LIBRARY_LINKER__glad_Debug CMakeFiles\glad.dir\external\glad\src\glad.c.obj
+  LANGUAGE_COMPILE_FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1
+  LINK_FLAGS = /machine:x64
+  OBJECT_DIR = CMakeFiles\glad.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_COMPILE_PDB = CMakeFiles\OpenGLShaderStartUp.dir\
-  TARGET_FILE = OpenGLShaderStartUp.exe
-  TARGET_IMPLIB = OpenGLShaderStartUp.lib
-  TARGET_PDB = OpenGLShaderStartUp.pdb
+  TARGET_COMPILE_PDB = CMakeFiles\glad.dir\glad.pdb
+  TARGET_FILE = glad.lib
+  TARGET_PDB = glad.pdb
+
+# =============================================================================
+# Object build statements for EXECUTABLE target ShaderStartUp
+
+
+#############################################
+# Order-only phony target for ShaderStartUp
+
+build cmake_object_order_depends_target_ShaderStartUp: phony || cmake_object_order_depends_target_glad cmake_object_order_depends_target_glfw
+
+build CMakeFiles\ShaderStartUp.dir\src\main.cpp.obj: CXX_COMPILER__ShaderStartUp_Debug C$:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\src\main.cpp || cmake_object_order_depends_target_ShaderStartUp
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17
+  INCLUDES = -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\include -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glad\include -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\include
+  OBJECT_DIR = CMakeFiles\ShaderStartUp.dir
+  OBJECT_FILE_DIR = CMakeFiles\ShaderStartUp.dir\src
+  TARGET_COMPILE_PDB = CMakeFiles\ShaderStartUp.dir\
+  TARGET_PDB = ShaderStartUp.pdb
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target ShaderStartUp
+
+
+#############################################
+# Link the executable ShaderStartUp.exe
+
+build ShaderStartUp.exe: CXX_EXECUTABLE_LINKER__ShaderStartUp_Debug CMakeFiles\ShaderStartUp.dir\src\main.cpp.obj | external\glfw\src\glfw3.lib glad.lib || external\glfw\src\glfw3.lib glad.lib
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
+  LINK_LIBRARIES = opengl32.lib  external\glfw\src\glfw3.lib  glad.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
+  OBJECT_DIR = CMakeFiles\ShaderStartUp.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_COMPILE_PDB = CMakeFiles\ShaderStartUp.dir\
+  TARGET_FILE = ShaderStartUp.exe
+  TARGET_IMPLIB = ShaderStartUp.lib
+  TARGET_PDB = ShaderStartUp.pdb
 
 
 #############################################
 # Utility command for edit_cache
 
 build CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\jajaz\OneDrive\문서\GitHub\UnityShaderStartUp\out\build\x64-debug && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = cmd.exe /C "cd /D C:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -92,17 +128,474 @@ build edit_cache: phony CMakeFiles\edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\jajaz\OneDrive\문서\GitHub\UnityShaderStartUp\out\build\x64-debug && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\jajaz\OneDrive\문서\GitHub\UnityShaderStartUp -BC:\Users\jajaz\OneDrive\문서\GitHub\UnityShaderStartUp\out\build\x64-debug"
+  COMMAND = cmd.exe /C "cd /D C:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp -BC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
 
 build rebuild_cache: phony CMakeFiles\rebuild_cache.util
 
+
+#############################################
+# Utility command for list_install_components
+
+build list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build CMakeFiles\install.util: CUSTOM_COMMAND all
+  COMMAND = cmd.exe /C "cd /D C:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P cmake_install.cmake"
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build install: phony CMakeFiles\install.util
+
+
+#############################################
+# Utility command for install/local
+
+build CMakeFiles\install\local.util: CUSTOM_COMMAND all
+  COMMAND = cmd.exe /C "cd /D C:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build install\local: phony CMakeFiles\install\local.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# C:/Users/jajaz/OneDrive/문서/GitHub/ShaderStartUp/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for uninstall
+
+build external\glfw\uninstall: phony external\glfw\CMakeFiles\uninstall
+
+
+#############################################
+# Utility command for edit_cache
+
+build external\glfw\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D C:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug\external\glfw && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build external\glfw\edit_cache: phony external\glfw\CMakeFiles\edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build external\glfw\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D C:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug\external\glfw && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp -BC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build external\glfw\rebuild_cache: phony external\glfw\CMakeFiles\rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build external\glfw\list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build external\glfw\CMakeFiles\install.util: CUSTOM_COMMAND external\glfw\all
+  COMMAND = cmd.exe /C "cd /D C:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug\external\glfw && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P cmake_install.cmake"
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build external\glfw\install: phony external\glfw\CMakeFiles\install.util
+
+
+#############################################
+# Utility command for install/local
+
+build external\glfw\CMakeFiles\install\local.util: CUSTOM_COMMAND external\glfw\all
+  COMMAND = cmd.exe /C "cd /D C:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug\external\glfw && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build external\glfw\install\local: phony external\glfw\CMakeFiles\install\local.util
+
+
+#############################################
+# Custom command for external\glfw\CMakeFiles\uninstall
+
+build external\glfw\CMakeFiles\uninstall | ${cmake_ninja_workdir}external\glfw\CMakeFiles\uninstall: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D C:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug\external\glfw && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P C:/Users/jajaz/OneDrive/문서/GitHub/ShaderStartUp/out/build/x64-debug/external/glfw/cmake_uninstall.cmake"
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# C:/Users/jajaz/OneDrive/문서/GitHub/ShaderStartUp/external/glfw/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target glfw
+
+
+#############################################
+# Order-only phony target for glfw
+
+build cmake_object_order_depends_target_glfw: phony || external\glfw\src\CMakeFiles\glfw.dir
+
+build external\glfw\src\CMakeFiles\glfw.dir\context.c.obj: C_COMPILER__glfw_Debug C$:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src\context.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
+  INCLUDES = -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\include -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug\external\glfw\src
+  OBJECT_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = external\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = external\glfw\src\glfw3.pdb
+
+build external\glfw\src\CMakeFiles\glfw.dir\init.c.obj: C_COMPILER__glfw_Debug C$:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src\init.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
+  INCLUDES = -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\include -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug\external\glfw\src
+  OBJECT_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = external\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = external\glfw\src\glfw3.pdb
+
+build external\glfw\src\CMakeFiles\glfw.dir\input.c.obj: C_COMPILER__glfw_Debug C$:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src\input.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
+  INCLUDES = -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\include -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug\external\glfw\src
+  OBJECT_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = external\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = external\glfw\src\glfw3.pdb
+
+build external\glfw\src\CMakeFiles\glfw.dir\monitor.c.obj: C_COMPILER__glfw_Debug C$:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src\monitor.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
+  INCLUDES = -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\include -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug\external\glfw\src
+  OBJECT_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = external\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = external\glfw\src\glfw3.pdb
+
+build external\glfw\src\CMakeFiles\glfw.dir\platform.c.obj: C_COMPILER__glfw_Debug C$:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src\platform.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
+  INCLUDES = -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\include -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug\external\glfw\src
+  OBJECT_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = external\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = external\glfw\src\glfw3.pdb
+
+build external\glfw\src\CMakeFiles\glfw.dir\vulkan.c.obj: C_COMPILER__glfw_Debug C$:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src\vulkan.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
+  INCLUDES = -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\include -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug\external\glfw\src
+  OBJECT_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = external\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = external\glfw\src\glfw3.pdb
+
+build external\glfw\src\CMakeFiles\glfw.dir\window.c.obj: C_COMPILER__glfw_Debug C$:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src\window.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
+  INCLUDES = -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\include -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug\external\glfw\src
+  OBJECT_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = external\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = external\glfw\src\glfw3.pdb
+
+build external\glfw\src\CMakeFiles\glfw.dir\egl_context.c.obj: C_COMPILER__glfw_Debug C$:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src\egl_context.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
+  INCLUDES = -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\include -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug\external\glfw\src
+  OBJECT_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = external\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = external\glfw\src\glfw3.pdb
+
+build external\glfw\src\CMakeFiles\glfw.dir\osmesa_context.c.obj: C_COMPILER__glfw_Debug C$:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src\osmesa_context.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
+  INCLUDES = -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\include -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug\external\glfw\src
+  OBJECT_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = external\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = external\glfw\src\glfw3.pdb
+
+build external\glfw\src\CMakeFiles\glfw.dir\null_init.c.obj: C_COMPILER__glfw_Debug C$:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src\null_init.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
+  INCLUDES = -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\include -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug\external\glfw\src
+  OBJECT_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = external\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = external\glfw\src\glfw3.pdb
+
+build external\glfw\src\CMakeFiles\glfw.dir\null_monitor.c.obj: C_COMPILER__glfw_Debug C$:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src\null_monitor.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
+  INCLUDES = -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\include -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug\external\glfw\src
+  OBJECT_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = external\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = external\glfw\src\glfw3.pdb
+
+build external\glfw\src\CMakeFiles\glfw.dir\null_window.c.obj: C_COMPILER__glfw_Debug C$:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src\null_window.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
+  INCLUDES = -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\include -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug\external\glfw\src
+  OBJECT_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = external\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = external\glfw\src\glfw3.pdb
+
+build external\glfw\src\CMakeFiles\glfw.dir\null_joystick.c.obj: C_COMPILER__glfw_Debug C$:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src\null_joystick.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
+  INCLUDES = -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\include -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug\external\glfw\src
+  OBJECT_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = external\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = external\glfw\src\glfw3.pdb
+
+build external\glfw\src\CMakeFiles\glfw.dir\win32_module.c.obj: C_COMPILER__glfw_Debug C$:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src\win32_module.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
+  INCLUDES = -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\include -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug\external\glfw\src
+  OBJECT_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = external\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = external\glfw\src\glfw3.pdb
+
+build external\glfw\src\CMakeFiles\glfw.dir\win32_time.c.obj: C_COMPILER__glfw_Debug C$:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src\win32_time.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
+  INCLUDES = -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\include -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug\external\glfw\src
+  OBJECT_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = external\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = external\glfw\src\glfw3.pdb
+
+build external\glfw\src\CMakeFiles\glfw.dir\win32_thread.c.obj: C_COMPILER__glfw_Debug C$:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src\win32_thread.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
+  INCLUDES = -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\include -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug\external\glfw\src
+  OBJECT_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = external\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = external\glfw\src\glfw3.pdb
+
+build external\glfw\src\CMakeFiles\glfw.dir\win32_init.c.obj: C_COMPILER__glfw_Debug C$:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src\win32_init.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
+  INCLUDES = -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\include -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug\external\glfw\src
+  OBJECT_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = external\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = external\glfw\src\glfw3.pdb
+
+build external\glfw\src\CMakeFiles\glfw.dir\win32_joystick.c.obj: C_COMPILER__glfw_Debug C$:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src\win32_joystick.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
+  INCLUDES = -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\include -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug\external\glfw\src
+  OBJECT_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = external\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = external\glfw\src\glfw3.pdb
+
+build external\glfw\src\CMakeFiles\glfw.dir\win32_monitor.c.obj: C_COMPILER__glfw_Debug C$:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src\win32_monitor.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
+  INCLUDES = -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\include -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug\external\glfw\src
+  OBJECT_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = external\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = external\glfw\src\glfw3.pdb
+
+build external\glfw\src\CMakeFiles\glfw.dir\win32_window.c.obj: C_COMPILER__glfw_Debug C$:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src\win32_window.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
+  INCLUDES = -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\include -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug\external\glfw\src
+  OBJECT_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = external\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = external\glfw\src\glfw3.pdb
+
+build external\glfw\src\CMakeFiles\glfw.dir\wgl_context.c.obj: C_COMPILER__glfw_Debug C$:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src\wgl_context.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
+  INCLUDES = -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\include -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src -IC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug\external\glfw\src
+  OBJECT_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = external\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = external\glfw\src\glfw3.pdb
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target glfw
+
+
+#############################################
+# Link the static library external\glfw\src\glfw3.lib
+
+build external\glfw\src\glfw3.lib: C_STATIC_LIBRARY_LINKER__glfw_Debug external\glfw\src\CMakeFiles\glfw.dir\context.c.obj external\glfw\src\CMakeFiles\glfw.dir\init.c.obj external\glfw\src\CMakeFiles\glfw.dir\input.c.obj external\glfw\src\CMakeFiles\glfw.dir\monitor.c.obj external\glfw\src\CMakeFiles\glfw.dir\platform.c.obj external\glfw\src\CMakeFiles\glfw.dir\vulkan.c.obj external\glfw\src\CMakeFiles\glfw.dir\window.c.obj external\glfw\src\CMakeFiles\glfw.dir\egl_context.c.obj external\glfw\src\CMakeFiles\glfw.dir\osmesa_context.c.obj external\glfw\src\CMakeFiles\glfw.dir\null_init.c.obj external\glfw\src\CMakeFiles\glfw.dir\null_monitor.c.obj external\glfw\src\CMakeFiles\glfw.dir\null_window.c.obj external\glfw\src\CMakeFiles\glfw.dir\null_joystick.c.obj external\glfw\src\CMakeFiles\glfw.dir\win32_module.c.obj external\glfw\src\CMakeFiles\glfw.dir\win32_time.c.obj external\glfw\src\CMakeFiles\glfw.dir\win32_thread.c.obj external\glfw\src\CMakeFiles\glfw.dir\win32_init.c.obj external\glfw\src\CMakeFiles\glfw.dir\win32_joystick.c.obj external\glfw\src\CMakeFiles\glfw.dir\win32_monitor.c.obj external\glfw\src\CMakeFiles\glfw.dir\win32_window.c.obj external\glfw\src\CMakeFiles\glfw.dir\wgl_context.c.obj
+  LANGUAGE_COMPILE_FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1
+  LINK_FLAGS = /machine:x64
+  OBJECT_DIR = external\glfw\src\CMakeFiles\glfw.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_COMPILE_PDB = external\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_FILE = external\glfw\src\glfw3.lib
+  TARGET_PDB = external\glfw\src\glfw3.pdb
+
+
+#############################################
+# Utility command for update_mappings
+
+build external\glfw\src\update_mappings: phony external\glfw\src\CMakeFiles\update_mappings
+
+
+#############################################
+# Utility command for edit_cache
+
+build external\glfw\src\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D C:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug\external\glfw\src && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build external\glfw\src\edit_cache: phony external\glfw\src\CMakeFiles\edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build external\glfw\src\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D C:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug\external\glfw\src && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp -BC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build external\glfw\src\rebuild_cache: phony external\glfw\src\CMakeFiles\rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build external\glfw\src\list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build external\glfw\src\CMakeFiles\install.util: CUSTOM_COMMAND external\glfw\src\all
+  COMMAND = cmd.exe /C "cd /D C:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug\external\glfw\src && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P cmake_install.cmake"
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build external\glfw\src\install: phony external\glfw\src\CMakeFiles\install.util
+
+
+#############################################
+# Utility command for install/local
+
+build external\glfw\src\CMakeFiles\install\local.util: CUSTOM_COMMAND external\glfw\src\all
+  COMMAND = cmd.exe /C "cd /D C:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug\external\glfw\src && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build external\glfw\src\install\local: phony external\glfw\src\CMakeFiles\install\local.util
+
+
+#############################################
+# Custom command for external\glfw\src\CMakeFiles\update_mappings
+
+build external\glfw\src\CMakeFiles\update_mappings | ${cmake_ninja_workdir}external\glfw\src\CMakeFiles\update_mappings: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D C:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P C:/Users/jajaz/OneDrive/문서/GitHub/ShaderStartUp/external/glfw/CMake/GenerateMappings.cmake mappings.h.in mappings.h"
+  DESC = Updating gamepad mappings from upstream repository
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# C:/Users/jajaz/OneDrive/문서/GitHub/ShaderStartUp/external/glfw/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for edit_cache
+
+build external\glfw\docs\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D C:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug\external\glfw\docs && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build external\glfw\docs\edit_cache: phony external\glfw\docs\CMakeFiles\edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build external\glfw\docs\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D C:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug\external\glfw\docs && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp -BC:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build external\glfw\docs\rebuild_cache: phony external\glfw\docs\CMakeFiles\rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build external\glfw\docs\list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build external\glfw\docs\CMakeFiles\install.util: CUSTOM_COMMAND external\glfw\docs\all
+  COMMAND = cmd.exe /C "cd /D C:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug\external\glfw\docs && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P cmake_install.cmake"
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build external\glfw\docs\install: phony external\glfw\docs\CMakeFiles\install.util
+
+
+#############################################
+# Utility command for install/local
+
+build external\glfw\docs\CMakeFiles\install\local.util: CUSTOM_COMMAND external\glfw\docs\all
+  COMMAND = cmd.exe /C "cd /D C:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\out\build\x64-debug\external\glfw\docs && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build external\glfw\docs\install\local: phony external\glfw\docs\CMakeFiles\install\local.util
+
 # =============================================================================
 # Target aliases.
 
-build OpenGLShaderStartUp: phony OpenGLShaderStartUp.exe
+build ShaderStartUp: phony ShaderStartUp.exe
+
+build glad: phony glad.lib
+
+build glfw: phony external\glfw\src\glfw3.lib
+
+build glfw3.lib: phony external\glfw\src\glfw3.lib
+
+build uninstall: phony external\glfw\uninstall
+
+build update_mappings: phony external\glfw\src\update_mappings
 
 # =============================================================================
 # Folder targets.
@@ -110,9 +603,30 @@ build OpenGLShaderStartUp: phony OpenGLShaderStartUp.exe
 # =============================================================================
 
 #############################################
-# Folder: C:/Users/jajaz/OneDrive/문서/GitHub/UnityShaderStartUp/out/build/x64-debug
+# Folder: C:/Users/jajaz/OneDrive/문서/GitHub/ShaderStartUp/out/build/x64-debug
 
-build all: phony OpenGLShaderStartUp.exe
+build all: phony glad.lib ShaderStartUp.exe external\glfw\all
+
+# =============================================================================
+
+#############################################
+# Folder: C:/Users/jajaz/OneDrive/문서/GitHub/ShaderStartUp/out/build/x64-debug/external/glfw
+
+build external\glfw\all: phony external\glfw\src\all external\glfw\docs\all
+
+# =============================================================================
+
+#############################################
+# Folder: C:/Users/jajaz/OneDrive/문서/GitHub/ShaderStartUp/out/build/x64-debug/external/glfw/docs
+
+build external\glfw\docs\all: phony
+
+# =============================================================================
+
+#############################################
+# Folder: C:/Users/jajaz/OneDrive/문서/GitHub/ShaderStartUp/out/build/x64-debug/external/glfw/src
+
+build external\glfw\src\all: phony external\glfw\src\glfw3.lib
 
 # =============================================================================
 # Built-in targets
@@ -121,14 +635,14 @@ build all: phony OpenGLShaderStartUp.exe
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeCCompiler.cmake.in C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeCCompilerABI.c C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeCInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeCXXCompiler.cmake.in C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeCXXCompilerABI.cpp C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeCXXInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeCompilerIdDetection.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeDetermineCCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeDetermineCXXCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeDetermineCompileFeatures.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeDetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeDetermineCompilerABI.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeDetermineCompilerId.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeDetermineRCCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeDetermineSystem.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeFindBinUtils.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeGenericSystem.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeParseImplicitIncludeInfo.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeParseImplicitLinkInfo.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeParseLibraryArchitecture.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeRCCompiler.cmake.in C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeRCInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeSystem.cmake.in C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeTestCCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeTestCXXCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeTestCompilerCommon.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeTestRCCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\ADSP-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\ARMCC-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\ARMClang-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\AppleClang-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\Borland-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\Bruce-C-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\Clang-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\Clang-DetermineCompilerInternal.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\Compaq-C-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\Cray-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\Embarcadero-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\Fujitsu-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\GHS-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\GNU-C-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\HP-C-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\HP-CXX-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\IAR-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\IBMClang-C-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\IBMClang-CXX-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\Intel-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\LCC-C-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\LCC-CXX-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\MSVC-C.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\MSVC-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\MSVC.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\NVHPC-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\NVIDIA-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\PGI-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\PathScale-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\SCO-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\SDCC-C-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\SunPro-C-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\TI-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\Watcom-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\XL-C-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\XL-CXX-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\XLClang-C-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\zOS-C-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Internal\FeatureTesting.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Platform\Windows-Determine-CXX.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Platform\Windows-MSVC-C.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Platform\Windows.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Platform\WindowsPaths.cmake C$:\Users\jajaz\OneDrive\문서\GitHub\UnityShaderStartUp\CMakeLists.txt CMakeCache.txt CMakeFiles\3.24.202208181-MSVC_2\CMakeCCompiler.cmake CMakeFiles\3.24.202208181-MSVC_2\CMakeCXXCompiler.cmake CMakeFiles\3.24.202208181-MSVC_2\CMakeRCCompiler.cmake CMakeFiles\3.24.202208181-MSVC_2\CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\BasicConfigVersion-SameMajorVersion.cmake.in C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeCInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeCXXInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeDependentOption.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeGenericSystem.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakePackageConfigHelpers.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeRCInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CheckCSourceCompiles.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CheckIncludeFile.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CheckLibraryExists.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\MSVC-C.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\MSVC.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\FindDoxygen.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\FindOpenGL.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\FindPackageHandleStandardArgs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\FindPackageMessage.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\FindThreads.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\GNUInstallDirs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Internal\CheckSourceCompiles.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Platform\Windows-MSVC-C.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Platform\Windows.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Platform\WindowsPaths.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\WriteBasicConfigVersionFile.cmake C$:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\CMakeLists.txt C$:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\CMakeLists.txt C$:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\CMake\cmake_uninstall.cmake.in C$:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\CMake\glfw3.pc.in C$:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\CMake\glfw3Config.cmake.in C$:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\docs\CMakeLists.txt C$:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src\CMakeLists.txt CMakeCache.txt CMakeFiles\3.24.202208181-MSVC_2\CMakeCCompiler.cmake CMakeFiles\3.24.202208181-MSVC_2\CMakeCXXCompiler.cmake CMakeFiles\3.24.202208181-MSVC_2\CMakeRCCompiler.cmake CMakeFiles\3.24.202208181-MSVC_2\CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeCCompiler.cmake.in C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeCCompilerABI.c C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeCInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeCXXCompiler.cmake.in C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeCXXCompilerABI.cpp C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeCXXInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeCompilerIdDetection.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeDetermineCCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeDetermineCXXCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeDetermineCompileFeatures.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeDetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeDetermineCompilerABI.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeDetermineCompilerId.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeDetermineRCCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeDetermineSystem.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeFindBinUtils.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeGenericSystem.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeParseImplicitIncludeInfo.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeParseImplicitLinkInfo.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeParseLibraryArchitecture.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeRCCompiler.cmake.in C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeRCInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeSystem.cmake.in C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeTestCCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeTestCXXCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeTestCompilerCommon.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeTestRCCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\ADSP-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\ARMCC-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\ARMClang-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\AppleClang-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\Borland-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\Bruce-C-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\Clang-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\Clang-DetermineCompilerInternal.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\Compaq-C-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\Cray-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\Embarcadero-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\Fujitsu-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\GHS-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\GNU-C-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\HP-C-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\HP-CXX-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\IAR-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\IBMClang-C-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\IBMClang-CXX-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\Intel-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\LCC-C-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\LCC-CXX-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\MSVC-C.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\MSVC-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\MSVC.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\NVHPC-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\NVIDIA-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\PGI-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\PathScale-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\SCO-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\SDCC-C-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\SunPro-C-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\TI-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\Watcom-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\XL-C-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\XL-CXX-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\XLClang-C-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\zOS-C-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Internal\FeatureTesting.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Platform\Windows-Determine-CXX.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Platform\Windows-MSVC-C.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Platform\Windows.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Platform\WindowsPaths.cmake C$:\Users\jajaz\OneDrive\문서\GitHub\UnityShaderStartUp\CMakeLists.txt CMakeCache.txt CMakeFiles\3.24.202208181-MSVC_2\CMakeCCompiler.cmake CMakeFiles\3.24.202208181-MSVC_2\CMakeCXXCompiler.cmake CMakeFiles\3.24.202208181-MSVC_2\CMakeRCCompiler.cmake CMakeFiles\3.24.202208181-MSVC_2\CMakeSystem.cmake: phony
+build C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\BasicConfigVersion-SameMajorVersion.cmake.in C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeCInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeCXXInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeDependentOption.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeGenericSystem.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakePackageConfigHelpers.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeRCInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CheckCSourceCompiles.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CheckIncludeFile.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\CheckLibraryExists.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\MSVC-C.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Compiler\MSVC.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\FindDoxygen.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\FindOpenGL.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\FindPackageHandleStandardArgs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\FindPackageMessage.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\FindThreads.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\GNUInstallDirs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Internal\CheckSourceCompiles.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Platform\Windows-MSVC-C.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Platform\Windows.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\Platform\WindowsPaths.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.24\Modules\WriteBasicConfigVersionFile.cmake C$:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\CMakeLists.txt C$:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\CMakeLists.txt C$:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\CMake\cmake_uninstall.cmake.in C$:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\CMake\glfw3.pc.in C$:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\CMake\glfw3Config.cmake.in C$:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\docs\CMakeLists.txt C$:\Users\jajaz\OneDrive\문서\GitHub\ShaderStartUp\external\glfw\src\CMakeLists.txt CMakeCache.txt CMakeFiles\3.24.202208181-MSVC_2\CMakeCCompiler.cmake CMakeFiles\3.24.202208181-MSVC_2\CMakeCXXCompiler.cmake CMakeFiles\3.24.202208181-MSVC_2\CMakeRCCompiler.cmake CMakeFiles\3.24.202208181-MSVC_2\CMakeSystem.cmake: phony
 
 
 #############################################
