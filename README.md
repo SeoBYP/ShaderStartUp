@@ -1,4 +1,4 @@
-# Unity Shader Start Up
+# Shader Start Up
 
 ---
 
