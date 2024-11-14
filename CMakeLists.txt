@@ -21,3 +21,4 @@ target_include_directories(glad PRIVATE external/glad/include)
 add_executable(ShaderStartUp src/main.cpp "include/main.h")
 target_include_directories(ShaderStartUp PRIVATE include external/glad/include)
 target_link_libraries(ShaderStartUp PRIVATE OpenGL::GL glfw glad)
+

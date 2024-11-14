@@ -4,11 +4,11 @@
 
 ## Chapter 1. 쉐이더(Shader)란 무엇인가?
 
-### 1.1 쉐이더의 정의
+### 1.1 쉐이더(Shader)의 정의
 
 컴퓨터로 그래픽을 그리는 작업은 동그라미, 사각형, 선, 삼각형 등 다양한 모양을 조합하여 최종 결과를 만들어내는 것입니다. 이 작업은 특정 명령어들의 집합으로 이루어지며, 이러한 명령어를 실행하는 것이 **쉐이더**입니다.
 
-**쉐이더(Shader)**는 **GPU**에서 실행되는 작은 프로그램으로, 그래픽 카드가 화면에 그래픽을 그리는 데 필요한 계산을 수행합니다. 쉐이더는 각 픽셀, 버텍스 또는 기타 그래픽 요소에 대해 실행되는 코드로, GPU가 요소의 색상, 위치, 밝기 등 다양한 시각적 효과를 계산할 수 있게 합니다.
+**쉐이더**는 **GPU**에서 실행되는 작은 프로그램으로, 그래픽 카드가 화면에 그래픽을 그리는 데 필요한 계산을 수행합니다. 쉐이더는 각 픽셀, 버텍스 또는 기타 그래픽 요소에 대해 실행되는 코드로, GPU가 요소의 색상, 위치, 밝기 등 다양한 시각적 효과를 계산할 수 있게 합니다.
 
 ---
 
@@ -77,14 +77,14 @@ GPU의 또 다른 강력한 기능은 **하드웨어로 가속된 수학 연산*
 
 ---
 
-## 1.6 그래픽 쉐이더 프로그래밍 언어
+### 1.6 그래픽 쉐이더 프로그래밍 언어
 
 쉐이더를 작성하기 위해 대표적으로 **GLSL**과 **HLSL**이 사용됩니다. 두 언어는 각각 **OpenGL**과 **DirectX** 환경에서 쉐이더 프로그램을 작성하기 위해 설계되었습니다. 이를 통해 프로그래머는 다양한 그래픽 효과를 구현하고, 3D 객체에 사실적인 조명, 텍스처, 그림자와 같은 시각적 효과를 추가할 수 있습니다.
 
-### 1.6.1 GLSL (OpenGL Shading Language)
+#### 1.6.1 GLSL (OpenGL Shading Language)
 **GLSL**은 **OpenGL Shading Language**의 약자로, **OpenGL API**에서 사용하는 쉐이더 프로그래밍 언어입니다. **Khronos Group**에서 개발했으며, Windows, Mac, Linux, Android 등 다양한 운영체제에서 실행 가능한 **크로스 플랫폼 언어**로 설계되었습니다. 이 언어는 주로 게임 개발이나 3D 그래픽 애플리케이션에서 사용되며, OpenGL에서 필요한 그래픽 기능을 쉽게 구현할 수 있도록 도와줍니다.
 
-### 1.6.2 HLSL (High-Level Shading Language)
+#### 1.6.2 HLSL (High-Level Shading Language)
 **HLSL**은 **High-Level Shading Language**의 약자로, **DirectX API**에서 사용하는 쉐이더 언어입니다. **Microsoft**에서 개발했으며, Windows와 Xbox와 같은 Microsoft 플랫폼에서 최적의 성능을 발휘하도록 설계되었습니다. 특히 Windows 기반의 게임 개발에 널리 사용됩니다.
 
 ## Chapter 2. Hello Window
@@ -105,7 +105,7 @@ CMakeList.txt라는 설정 파일을 통해 프로젝트의 소스 파일, 헤�
 CMake를 사용하여 "Hello World!" 콘솔 프로그램을 만들기 위해 아래와 같은 파일 구조를 구성합니다.
 
 ```
-HelloWorldProject/
+ShaderStartUp/
 ├── CMakeLists.txt          # CMake 설정 파일
 └── src/
     └── main.cpp            # C++ 소스 파일
@@ -124,14 +124,14 @@ HelloWorldProject/
 cmake_minimum_required(VERSION 3.8)
 
 # 프로젝트 이름 설정
-project(HelloWorldProject)
+project(ShaderStartUp)
 
 # C++ 표준 설정
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # 실행 파일 생성
-add_executable(HelloWorldProject src/main.cpp)
+add_executable(ShaderStartUp src/main.cpp)
 
 ```
 
@@ -201,7 +201,7 @@ int main() {
 다음은 디렉토리 구조입니다.
 
 ```
-OpenGLShaderStartUp/         # 프로젝트 루트 폴더
+ShaderStartUp/         # 프로젝트 루트 폴더
 ├── CMakeLists.txt            # 최상위 CMake 설정 파일
 ├── src/                      # 프로젝트의 소스 파일
 │   └── main.cpp              # 메인 소스 파일 (파일명은 필요에 따라 변경)
@@ -270,5 +270,170 @@ int main() {
 **GLFW 전에 GLAD를 포함해야 합니다. GLAD의 포함 파일에는 필요한 OpenGL 헤더가 백그라운드에 포함되어 있으므로(예: GL/gl.h) OpenGL을 필요로 하는 다른 헤더 파일(예: GLFW) 전에 GLAD를 포함해야 합니다.**
 
 
-#### 2.3 Window 창 띄우기
+### 2.3 Window 창 띄우기
 
+#### 2.3.1 main함수에서 GLFW 윈도우 생성
+
+[GLFW API 도큐먼트 링크](https://www.glfw.org/docs/latest/intro_guide.html)
+
+```
+int main()
+{
+    glfwInit();
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    return 0;
+}
+```
+
+```main```함수에서 먼저 ```glfwInit```함수를 통해 GLFW를 초기화합니다. 이후 ```glfwWindowHint```를 사용해 GLFW 설정을 지정합니다. 첫 번쨰 인수는 설정 옵션을 나타내고, 두 번쨰 인수는 해당 옵션에 지정할 값을 의미합니다.
+
+여기에서는 OpenGL 3.4 버전을 사용하기 때문에, ```GLFW_CONTEXT_VERSION_MAJOR```와 ```GLFW_CONTEXT_VERSION_MINOR```를 각각 3으로 설정하여 OpenGL 3.4버전에서 실행되도록 합니다. 또한 ```GLFW_OPENGL_PROFILE```를 ```GLFW_OPENGL_CORE_PROFILE```로 설정해 최신 OpenGL 기능을 사용할 수 있도록 지정합니다. Mac OS X의 경우, ```glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);```를 추가해주어야 합니다.
+
+#### 2.3.2 윈도우 객체 생성
+
+윈도우 객체는 OpenGL 컨텍스트와 윈도우 데이터를 포함하며, 대부분의 GLFW 함수에서 필요합니다.
+
+```
+GLFWwindow* window = glfwCreateWindow(800, 600, "LearnOpenGL", NULL, NULL);
+if (window == NULL)
+{
+    std::cout << "Failed to create GLFW window" << std::endl;
+    glfwTerminate();
+    return -1;
+}
+glfwMakeContextCurrent(window);
+
+```
+
+```glfwCreateWindow``` 함수는 윈도우의 폭, 높이, 이름을 지정하고 나머지 인수는 NULL로 설정합니다. 이후 반환된 ```GLFWwindow``` 객체를 통해 윈도우와 관련된 모든 작업을 수행합니다. 또한 ```glfwMakeContextCurrent```를 호출해 생성한 윈도우 컨텍스트를 현재 스레드의 주요 컨텍스트로 만듭니다.
+
+#### 2.3.3 GLAD 초기화
+
+OpenGL 함수를 호출하기 위해 GLAD를 초기화해야 합니다.
+```
+if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+{
+    std::cout << "Failed to initialize GLAD" << std::endl;
+    return -1;
+}
+```
+
+GLAD 초기화는 ```gladLoadGLLoader``` 함수를 사용하여 수행하며, ```glfwGetProcAddress```를 전달하여 운영체제에 맞는 OpenGL 함수 주소를 로드합니다.
+
+#### 2.3.4 뷰포트(Viewport) 설정
+OpenGL의 뷰포트는 화면에 렌더링되는 영역을 정의합니다.
+```
+glViewport(0, 0, 800, 600);
+
+```
+
+```glViewport```의 첫 번째와 두 번쨰 매개변수는 위도우의 좌측 하단의 위취를, 세번째와 네번째 매게변수는 윈도우의 너비와 높이를 지정합니다.
+화면 좌표는 OpenGL에서 -1에서 1사이로 변환되며, 윈도우의 픽셀 크기로 매핑됩니다.
+
+#### 2.3.5 윈도우 크기 조정 콜백 함수 등록
+
+윈도우 크리가 변경될 떄마다 뷰포트를 조정하기 위해 콜백 함수를 등록할 수 있습니다.
+
+```
+void framebuffer_size_callback(GLFWwindow* window, int width, int height)
+{
+    glViewport(0, 0, width, height);
+}
+glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+```
+```framebuffer_size_callback``` 함수는 새로운 윈도우 크기에 맞게 뷰포트를 재설정하며, ```glfwSetFramebufferSizeCallback``` 함수를 통해서 콜백을 등록합니다. 윈도우가 처음 표시될 때도 콜백 함수가 호출됩니다.
+
+#### 2.3.6 렌더 루프 생성
+
+응용 프로그램이 윈도우를 띄운 후 종료될 떄까지 계속 실행되는 렌더 루프를 생성합니다. 이 루프는 윈도우가 열려 있는 동안 지속적으로 실행되며, 응용 프로그램이 종료될 때까지 화면을 갱신합니다.
+
+```
+while(!glfwWindowShouldClose(window))
+{
+    glfwSwapBuffers(window);
+    glfwPollEvents();
+}
+```
+
+```glfwWindowShouldClose```는 윈도우가 닫혀야 하는 지를 확인하고, ```glfwPollEvents```는 키보드 및 마우스 입력 같은 이벤트들을 처리합니다. ```glfwSwapBuffers```는 이중 버퍼링을 사용해서 현재 프레임의 색상을 버퍼에 교체하여 화면에 표기합니다.
+
+- **이중 버퍼링(Double Buffering)**
+이중 버퍼링은 깜빡임 없이 부드러운 화면을 표시하기 위해서 사용하는 기법입니다. OpenGL에서 화면을 그릴 때, **전면 버퍼(front buffer)**와 **후면 버퍼(back buffer)**라는 두 개의 버퍼를 사용합니다.
+  - **후면 버퍼**는 현재 프레임을 그리고 있는 버퍼입니다.
+  - **전면 버퍼**는 다음 프레임을 미리 그리는 버퍼입니다.
+이렇게 두 가지의 버퍼를 사용하면서, 후면 버퍼에서 다음에 그릴 프레임이 완전히 그려지고 나서 전면 버퍼와 교체하므로, 화면 전환이 부드럽고 깜빡임이 발생하지 않습니다. OpenGL에서는 이중 버퍼링을 사용하여 화면 갱신을 구현합니다.
+
+- **단일 버퍼링(Single Buffering)**
+단일 버퍼링은 후면 버퍼없이 전면 버퍼로만 화면을 그리는 기법입니다. 화면이 즉시 표시되므로 프레임이 그려기는 과정이 화면에 그대로 나타나 깜박임 현상나 불완전한 화면이 보일 수 있습니다. 현재 OpenGL에서는 사용하지 않는 기법입니다.
+
+#### 2.3.7 렌더 루프 종료 후 리소스 정리
+
+렌더 루프가 종료되면 OpenGL과 GLFW가 사용한 **메모리 및 시스템 리소스를 해제**해야 합니다. 이를 ```glfwTerminate()``` 함수를 호출하여 GLFW에서 할당한 모든 리소스를 정리합니다.
+```
+// 렌더 루프 종료 후 리소스 정리
+glfwTerminate();
+return 0;
+```
+- **주의** : 
+응용 프로그램이 종료될 때마다 반드시 호출해야 합니다. 그렇지 않으면 시스템 리소스가 그대로 남아 있을 수 있습니다.
+
+![기본 Window 화면 출력](assetResource/Chapter02/10.png)
+
+
+#### 2.3.8 입력 처리
+GLFW의 ```glfwGetKey``` 함수를 사용해 특정 키 입력을 처리할 수 있습니다. 예를 들어, ```ESC``` 키를 눌렀을 때 프로그램을 종료하도록 설정합니다.
+
+```aiignore
+void processInput(GLFWwindow* window)
+{
+	if(glfwGetKey(window,GLFW_KEY_ESCAPE) == GLFW_PRESS)
+	{
+		glfwSetWindowShouldClose(window, true);
+	}
+}
+```
+```aiignore
+while (!glfwWindowShouldClose(window))
+{
+    processInput(window);
+
+    glfwSwapBuffers(window);
+    glfwPollEvents();
+}
+```
+매 프레임마다 ```processInput``` 함수를 호출하여 ```ESC``` 키가 눌렸는지 확인하고, 눌렸다면 ```glfwSetWindowShouldClose``` 함수를 호출해 윈도우를 닫습니다.
+
+
+#### 2.3.9 렌더링
+
+모든 렌더링 명령은 렌더 루프(render loop) 안에서 실행됩니다. 렌더 루프 내에서 렌더링을 수행하면서 화면을 지속적으로 업데이트하고, 사용자 입력을 반영하며, 애니메이션이나 움직임을 부드럽게 보여줄 수 있기 떄문입니다.
+
+```
+// 렌더링 루프
+while(!glfwWindowShouldClose(window))
+{
+    // 입력
+    processInput(window);
+
+    // 렌더링 명령 함수
+    ...
+
+    glfwPollEvents();
+    glfwSwapBuffers(window);
+}
+```
+
+먼저 간단하게 윈도우 화면을 지정한 색상으로 변경하는 렌더링 과정을 진행합니다. 화면을 갱신할 때 **이전 프레임의 잔상**을 없애기 위해 초기화 작업이 필요합니다. OpenGL에서는 ```glClearColor```와 ```glClear``` 함수를 사용해서 화면을 초기화하고, 원하는 생상으로 덮어씌울 수 있습니다.
+
+```aiignore
+glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+glClear(GL_COLOR_BUFFER_BIT);
+```
+- ```glClearColor```는 화면 초기화 색상을 설정합니다. 위 코드에서는 ```R:0.2```, ```G:0.3```, ```B:0.3```, ```A:1.0```의 값으로 설정하여 짙은 청록색 배경을 지정합니다.
+- ```glClear``` 함수는 ```GL_COLOR_BUFFER_BIT```를 전달받아 색상 버퍼를 초기화합니다. 이로써, 설정된 ```glClearColor```의 색상으로 화면이 덮어쓰여 이전 프레임의 잔상이 제거됩니다.
+
+이러면 렌더 루프는 화면을 매 프레임마다 초기화 색상으로 덮어씌워 주며, 사용자의 입력과 렌더링 작업을 부드럽게 수행해 줍니다.
+
+![색상 렌더링 코드 적용 화면](assetResource/Chapter02/11.png)
